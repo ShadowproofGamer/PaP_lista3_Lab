@@ -4,10 +4,10 @@ let position elem list =
          if remaining=[] then result
          else let check = (List.hd remaining)
               in match check with
-                    check when elem=check -> position_rec element (List.tl remaining) (i+1) (result@[i])
+                    check when elem=check -> position_rec element (List.tl remaining) (i+1) (i::result)
                   | _ -> position_rec element (List.tl remaining) (i+1) result 
       
-  in position_rec elem (List.tl list) 0 [];;
+  in (List.rev (position_rec elem list 0 []));;
   
 
 position 1 [1;3;4;1;2;1;6;8;9];;
